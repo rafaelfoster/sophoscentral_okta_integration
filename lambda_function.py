@@ -1,5 +1,4 @@
-#!/usr/bin/python3
-
+import json
 import time
 import logging
 import requests
@@ -11,6 +10,13 @@ from os import path
 from re import match
 from sophos_central.sophos_auth import Auth
 from sophos_central.sophos_users import User
+
+def lambda_handler(event, context):
+    main()
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Hello from Lambda!')
+    }
 
 def get_file_location(process_path):
     dir_name = path.dirname(path.abspath(__file__))
@@ -52,9 +58,9 @@ def main():
 
     # A single user for testing purposes.
     # user_data should be filled with OKTA user from its API
-    user_data = dict()
-    user_data["name"] = "TEST USER"
-    user_data["email"] = "testing@rafaelfoster.com.br"
+    #user_data = dict()
+    #user_data["name"] = "TEST USER"
+    #user_data["email"] = "testing@rafaelfoster.com.br"
 
     if not any(d['email'] == user_data["email"] for d in Central_Users["items"]):
          print("User does not exist.... Creating user...")
@@ -71,6 +77,3 @@ def main():
     # print(end - start)
     # print("\n\n")
     # print(Central_Users)
-
-if __name__ == "__main__":
-    main()
