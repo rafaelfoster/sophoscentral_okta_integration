@@ -13,10 +13,6 @@ from sophos_central.sophos_users import User
 
 def lambda_handler(event, context):
     main()
-    return {
-        'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
-    }
 
 def get_file_location(process_path):
     dir_name = path.dirname(path.abspath(__file__))
