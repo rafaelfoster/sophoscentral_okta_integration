@@ -6,5 +6,4 @@ whoami_uri = 'https://api.central.sophos.com/whoami/v1'
 users_uri = '/common/v1/directory/users'
 
 # Path locations
-sophos_conf_path = PurePath("/config/sophos_config.ini")
-intelix_conf_path = PurePath("/config/intelix_config.ini")
+credentials_path = PurePath("/config/credentials.ini")
